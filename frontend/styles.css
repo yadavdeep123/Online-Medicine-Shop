@@ -1057,6 +1057,190 @@ nav ul li a:hover {
     height: auto; /* Let height adjust naturally */
   }
 }
+.add-to-cart-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #0056b3;
+    }
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 100%;
+      height: 300px;
+      background-color: #fff; 
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 90%;
+      object-fit: cover;
+      margin-top: 10px; 
+      display: block;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .arrow {
+      display: inline-block;
+      margin: 0 20px;
+      cursor: pointer;
+      font-size: 24px;
+      color: #333;
+      background: #eee;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      user-select: none;
+    }
+
+    .dots {
+      display: inline-block;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .active {
+      background-color: #333;
+    }
+
+    .pause-btn {
+      display: inline-block;
+      margin-left: 20px;
+      font-size: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+     body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .stat {
+      margin: 10px;
+    }
+
+    .stat .number {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .stat .label {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .download-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .download-section p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .download-section input[type="text"] {
+      padding: 8px;
+      width: 200px;
+      margin-right: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .download-section button {
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .download-section button:hover {
+      background-color: #218838;
+    }
+
+    .store-logos {
+      margin-top: 15px;
+    }
+
+    .store-logos img {
+      height: 40px;
+      margin: 0 10px;
+    }
+    .social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+.yadav img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .yadav img {
+    height: auto; /* Let height adjust naturally */
+  }
+}
 
 
    
