@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Cards and Checkups</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .carousel-container {
+      position: relative;
+    }
+
+    .card-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 1rem;
+      padding: 10px 0;
+    }
+
+    .card-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .health-card {
+      flex: 0 0 auto;
+      width: 180px;
+      text-align: center;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      background-color: #fff;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .health-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .health-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .health-title {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      z-index: 1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .arrow-left {
+      left: -20px;
+    }
+
+    .arrow-right {
+      right: -20px;
+    }
+
+    @media (max-width: 576px) {
+      .arrow-btn {
+        display: none;
+      }
+    }
+
+    .checkup-section {
+      position: relative;
+    }
+
+    .scrolling-wrapper {
+      overflow-x: auto;
+      display: flex;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+    }
+
+    .checkup-card {
+      min-width: 250px;
+      margin-right: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .checkup-card:hover {
+      transform: scale(1.05);
+    }
+
+    .badge-safe {
+      background-color: #d1e7dd;
+      color: #0f5132;
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    .price {
+      font-size: 1rem;
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .discounted-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      width: 35px;
+      height: 35px;
+    }
+
+    .scroll-btn:hover {
+      background-color: #eee;
+    }
+
+    .scroll-left {
+      left: -10px;
+    }
+
+    .scroll-right {
+      right: -10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container my-5">
+  <h3 class="mb-4">Shop by Health Concerns</h3>
+  <div class="carousel-container">
+    <button class="arrow-btn arrow-left" onclick="document.getElementById('healthCardSlider').scrollBy({ left: -200, behavior: 'smooth' })">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <div class="card-slider" id="healthCardSlider">
+      <a href="diabetes.html" class="health-card">
+        <img src="https://onemg.gumlet.io/a56b26a0-30f1-4977-96f8-7acf1b3e0e02.png" alt="Diabetes">
+        <div class="health-title">Diabetes</div>
+      </a>
+      <a href="heart.html" class="health-card">
+        <img src="https://onemg.gumlet.io/629aaf65-515f-4069-b730-28618f78597b.png" alt="Heart Care">
+        <div class="health-title">Heart Care</div>
+      </a>
+      <a href="stomach.html" class="health-card">
+        <img src="https://onemg.gumlet.io/b251c9cf-8d88-4fb8-8c3c-7b328caa9f70.png" alt="Stomach Care">
+        <div class="health-title">Stomach Care</div>
+      </a>
+      <a href="liver.html" class="health-card">
+        <img src="https://onemg.gumlet.io/573d8a1a-edd0-46a5-a0fe-01a1c2bcc8f2.png" alt="Liver Care">
+        <div class="health-title">Liver Care</div>
+      </a>
+      <a href="bone-joint.html" class="health-card">
+        <img src="https://onemg.gumlet.io/a1af8b43-2836-483d-8709-99eff1cc6f70.png" alt="Bone & Muscle Care">
+        <div class="health-title">Bone & Muscle Care</div>
+      </a>
+      <a href="kidney.html" class="health-card">
+        <img src="https://onemg.gumlet.io/96f9ed8a-ba62-426c-bd66-6762f40f3370.png" alt="Kidney Care">
+        <div class="health-title">Kidney Care</div>
+      </a>
+      <a href="derma.html" class="health-card">
+        <img src="https://onemg.gumlet.io/730dbe50-4bdc-4fa8-9a09-93bc5d6c6f38.png" alt="Derma Care">
+        <div class="health-title">Derma Care</div>
+      </a>
+    </div>
+    <button class="arrow-btn arrow-right" onclick="document.getElementById('healthCardSlider').scrollBy({ left: 200, behavior: 'smooth' })">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</div>
+
+<div class="container my-5 checkup-section">
+  <h4 class="mb-3">Full Body Health Checkups</h4>
+  <button class="scroll-btn scroll-left" onclick="scrollCheckups(-300)">&lt;</button>
+  <button class="scroll-btn scroll-right" onclick="scrollCheckups(300)">&gt;</button>
+  <div class="scrolling-wrapper" id="scrollContainer">
+    <div class="checkup-card" onclick="location.href='test1.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Comprehensive Gold Full Body</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹4499</p>
+      <p class="discounted-price">₹2249 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test2.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Good Health Silver Package</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹1399</p>
+      <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test3.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Comprehensive Silver Full Body</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹3799</p>
+      <p class="discounted-price">₹1899 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test4.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Comprehensive Platinum Full Body</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹7199</p>
+      <p class="discounted-price">₹3599 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test5.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Good Health Platinum</h6>
+      </div>
+      <p class="mb-1 price">₹2999</p>
+      <p class="discounted-price">₹1499 <small class="text-success">50% OFF</small></p>
+    </div>
+  </div>
+  <div class="text-end mt-2">
+    <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+  </div>
+</div>
+
+<script>
+   function scrollLeft() {
+    document.getElementById("dealScroll").scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  function scrollRight() {
+    document.getElementById("dealScroll").scrollBy({ left: 300, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

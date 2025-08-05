@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards Example</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+
+</head>
+<style>
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+
+body {
+  background-color: #f3f4f6;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  max-width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card button:hover {
+  background-color: #0056b3;
+}
+
+
+</style>
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/5e019861779e42649f3c82d9ec3a9a57.jpg" alt="Profile" class="card-img" />
+          <div class="card-body">
+            <h5 class="card-title">Wellbeing Nutrition Melts Into Vegan Vitamin B12 + Folate | Oral Thin Strip for Energy, Brain & Nerve Function | Sugar-Free | Flavour Misty Orange Mint</h5>
+            <p class="card-text">box of 30 disintegrating strips: </p>
+            <p>₹299</p>
+           <button onclick="makePayment()">pay now</button>
+        </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/rd51qg97rqh5wld3kuik.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Kerala Ayurveda Bala Thailam</h5>
+            <p class="card-text">bottle of 450 ml oil :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/f426ab11603844ca99727ddd0a187666.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ensure Plus Powder Scientifically Formulated to Support Recovery Vanilla</h5>
+            <p class="card-text">jar of 2kg powder :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/e30284a0c35441f28a513513a2a10483.jpg" class="card-img-top" alt="...">         
+          <div class="card-body">
+            <h5 class="card-title">Acne-UV Sunscreen with Broad Spectrum UVA/UVB Protection | Oil Free & Water Resistant | Gel SPF 50</h5>
+            <p class="card-text">tube of 50 gm gel:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ 
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/1888d781860f42d6bdd108270b0db958.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Dr. Morepen Triple Strength Omega 3 Fish Oil 1250mg Softgel with Vitamin E | For Heart & Brain Function | Bone, Joint & Muscle Care</h5>
+            <p class="card-text">bottel of 60 soft Protein capsules:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/f32fa34d17784d03bed6f4bdeac31675.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Himalaya Liv.52 DS Tablet | For Liver Care</h5>
+            <p class="card-text">bottle of tablets:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+        </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/6f2f500445be42849dcbd576e83f7046.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Protinex Diabetes Care Protein Powder with Vitamins | For Strength, Blood Sugar & Weight Management | Nutrition Formula Powder</h5>
+            <p class="card-text">box of 400 gm Powder:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/5a68f0b2a7394c13bd9bca4de28fe0df.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">A to Z NS+ Daily Multivitamin Tablets – Zinc & Vitamin C for Immunity, B-Complex & Essential Nutrients for Energy & Wellness</h5>
+            <p class="card-text">strip of 15 tablets:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            -<p>₹299</p>
+           <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/b136454dfe29475fb31ee05e6cae380f.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">UV Doux Silicone Sunscreen Gel SPF 50 PA+++ | Oil-Free, Matte Finish & Water-Resistant</h5>
+            <p class="card-text">tube of 50 gm Gel:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+           <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/pharmacy-production-rxs%2F1743772806_crop_847.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Salmon Omega 3 Fish Oil 1000mg Capsule | High absorption | Helps manage cholesterol | by Tata 1mgs</h5>
+            <p class="card-text">bottel of 60 capsules:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/874c73ab2b3747f68d49263ab2c475ca.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">zincovit tablet with multivitamain,multimineral $ grape seed extract</h5>
+            <p class="card-text">strip of 15 tablets:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/c2661631-300c-45a4-a7c3-f46fe9fca127.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ahaglow Advanced Skin Rejuvenating Face Wash | Effective Pore Cleanser | SLS & Paraben-Free Face Care Product</h5>
+            <p class="card-text">tube of 200gm face wash :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+           <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/2267489995104a1ea4eae73adca885a3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Chemist At Play Daily Exfoliating Body Wash</h5>
+            <p class="card-text">bottle of 236ml body wash :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/457ff8bd1ed6415faa71dea953dba6a3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Fixderma Salyzap 2% Salicyclic Acid Face Cleanser for Acne Prone Skin|Fights with Acne & Controls Oil</h5>
+            <p class="card-text">bottle of 60 gm Cleanser:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/88216bf6e3694ff9a66125b4045e9373.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Sesderma Azelac RU Liposomal Serum with Tranexamic Acid Booster | For Skin Depigmentation</h5>
+            <p class="card-text">bottle of 30 ml serum :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+              </p>
+              <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/c764412f1f1f416f90a275a36ddac06b.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Kapiva Shilajit Gold Capsules with Black Musli, Gokshura & Ashwagandha | For Stamina & Energy</h5>
+            <p class="card-text">jar of 60 capsules:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/f46195c8cf7b4d7284aa73594365434c.jpg" alt="Profile" class="card-img" />
+          <div class="card-body">
+            <h5 class="card-title">Fixderma Salyzap 2% Salicylic Acid Body Spray | Anti Acne Body Spray Fights with Acne & Unclogs Pores</h5>
+            <p class="card-text">bottle of 50ml spray:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/7d97afdbd07b469c93c1e8e7dd42a189.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ostocalcium Total Chewable Tablet with Vitamin D & Calcium | Supports Strong Bones, 
+              Joints & Muscles (Veg) | Flavour Mixed Fruit</h5>
+            <p class="card-text">bopttle of 60 Chewable tablets :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/87965f8574c7415192e45cab8be34ae1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Optimum Nutrition (ON) Gold Standard 100% Whey Protein | For Muscle Recovery | No Added Sugar | Flavour Powder Double Rich Chocolate</h5>
+            <p class="card-text">jar of 2lb powder:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/cfdf3d51be8b4d088ebbe3eeb4c5a5dc.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Rejuglow Face Wash with Glycolic & Salicylic Acid | For Skin Rejuvenation | Paraben Free Face Care Product</h5>
+            <p class="card-text">bottle of 200ml face wash :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ 
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/9ed63cb6f7094fa2b0ddac40805ff73a.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Protinex Mother’s Drink with DHA, Vitamins & Protein | Nutrition Formula Powder Chocolate</h5>
+            <p class="card-text">jar of 400gm Powder:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/8687f21429534ae394008c332309b098.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Minimalist 10% Niacinamide Face Serum | Reduces Oil and Acne Spots | Face Care Product for All Skin Types</h5>
+            <p class="card-text">bottle of 30 ml serm:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/476c8cbd6c9b4a7b90d4895c1e887872.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Fixderma Nigrifix Cream for Dark Neck, Elbow & Knee | Underarm Whitening Cream with Lactic Acid</h5>
+            <p class="card-text">tube of 50 gm cream :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+        </div>
+      </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/266b6f4782424830a4e711d1ee1d3e5c.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Kapiva Shilajit Gold Resin with Ashwagandha, Black Musli & Gokshura | For Stamina & Energy</h5>
+            <p class="card-text">jar 20 gm resin:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/b136454dfe29475fb31ee05e6cae380f.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">UV Doux Silicone Sunscreen Gel SPF 50 PA+++ | Oil-Free, Matte Finish & Water-Resistant</h5>
+            <p class="card-text">tube of 50 gm Gel:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/c23d746e7733498fbe08d585cec8d675.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Photostable Gold Matte Finish Sunscreen Gel | PA+++ SPF 55</h5>
+            <p class="card-text">tube of 50 gm gel:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/ede3dde4c19c4199a5c32a70e70a650a.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Fixderma Shadow SPF 30+ Gel</h5>
+            <p class="card-text">tube of 40gm gel :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/c2661631-300c-45a4-a7c3-f46fe9fca127.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ahaglow Advanced Skin Rejuvenating Face Wash | Effective Pore Cleanser | SLS & Paraben-Free Face Care Product</h5>
+            <p class="card-text">tube of 200gm face wash :
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+           <button onclick="makePayment()">pay now</button>>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- Repeat this col-md-3 (means 12/3=4 columns per row) for 4 cards -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/dc307fcd6716499bb996d3b2a96031ce.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Dabur Jamun Neem Karela Ayurvedic Juice | For Healthy Glucose Levels, Digestion, Metabolism & Immunity</h5>
+            <p class="card-text">bottle of 1ltr juice:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+           <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat above block 3 more times for total 4 cards -->
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/0f72a3517ea0449192e1378b77ac42e8.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Wellbeing Nutrition Slow Triple Magnesium Complex with Glycinate, Aquamin Citrate & Threonate 1000mg Capsule</h5>
+            <p class="card-text">jar of 60 capsules:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+            </p>
+            <p>₹299</p>
+           <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/l_watermark_346,w_150,h_150/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/81e831da9351456a81ca24421b73dfa9.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Accu-Chek Instant Test Strip ( Only Strip)</h5>
+            <p class="card-text">box of 50 test strips:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects of cancer treatment -->
+              </p>
+              <p>₹299</p>
+           <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <img src="https://onemg.gumlet.io/a_ignore,w_150,h_150,c_fit,q_auto,f_auto/gecjsyjctvgxwat5hzdn.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Minimalist SPF 50 PA++++ Sunscreen | No Whitecast and Contains Multi Vitamins</h5>
+            <p class="card-text">tube of 50gm cream:
+              <!-- <br> - Maintain weight and muscle mass
+              <br> - Repair body tissues and support wound healing
+              <br> - Recover from the side effects  cancer treatment -->
+            </p>
+            <p>₹299</p>
+            <button onclick="makePayment()">pay now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  function makePayment() {
+    var options = {
+      key: "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay key
+      amount: 29900, // Amount in paise = ₹299
+      currency: "INR",
+      name: "Fixderma Salyzap Body Spray",
+      description: "Payment for 50ml spray",
+      handler: function (response) {
+        alert("Payment successful! ID: " + response.razorpay_payment_id);
+      },
+      prefill: {
+        name: "Your Name",
+        email: "email@example.com",
+        contact: "9999999999"
+      },
+      theme: {
+        color: "#3399cc"
+      }
+    };
+    var rzp = new Razorpay(options);
+    rzp.open();
+  }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

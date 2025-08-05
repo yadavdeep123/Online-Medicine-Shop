@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor List</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#doctor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.card p {
+  margin: 5px 0;
+}
+</style>
+</head>
+<body>
+  <h1>Doctor Directory</h1>
+
+  <div id="doctor-list"></div>
+
+  <script>const doctors = [
+  { name: "Dr. Aditi Sharma", specialization:"cardiologist",location:"Delhi",available:true,image:"sp.jpg"}, 
+  { name: "Dr. Rahul Verma", specialization: "Dermatologist", location: "Mumbai", available: false },
+  { name: "Dr. Sneha Patil", specialization: "Neurologist", location: "Bangalore", available: true },
+  { name: "Dr. Vikram Das", specialization: "Pediatrician", location: "Kolkata", available: false },
+  { name: "Dr. Priya Sinha", specialization: "Orthopedic", location: "Chennai", available: true },
+  { name: "Dr. Arjun Mehta", specialization: "Psychiatrist", location: "Jaipur", available: true },
+  { name: "Dr. Kavita Rao", specialization: "Gynecologist", location: "Hyderabad", available: false },
+  { name: "Dr. Ramesh Gupta", specialization: "Oncologist", location: "Ahmedabad", available: true },
+  { name: "Dr. Neha Joshi", specialization: "ENT", location: "Pune", available: false },
+  { name: "Dr. Anil Kapoor", specialization: "Urologist", location: "Surat", available: true },
+  { name: "Dr. Shreya Nair", specialization: "Endocrinologist", location: "Indore", available: true },
+  { name: "Dr. Mohan Iyer", specialization: "Nephrologist", location: "Lucknow", available: false },
+  { name: "Dr. Tanya Paul", specialization: "Rheumatologist", location: "Nagpur", available: true },
+  { name: "Dr. Kunal Bansal", specialization: "Pulmonologist", location: "Bhopal", available: true },
+  { name: "Dr. Meera Yadav", specialization: "Dentist", location: "Patna", available: false },
+  { name: "Dr. Abhay Saxena", specialization: "General Physician", location: "Agra", available: true },
+  { name: "Dr. Swati Kaul", specialization: "Ophthalmologist", location: "Kanpur", available: true },
+  { name: "Dr. Ravi Rathi", specialization: "Hematologist", location: "Varanasi", available: false },
+  { name: "Dr. Deepa Menon", specialization: "Dermatologist", location: "Coimbatore", available: true },
+  { name: "Dr. Nikhil Sen", specialization: "Psychologist", location: "Amritsar", available: true }
+];
+
+const listContainer = document.getElementById("doctor-list");
+
+doctors.forEach((doc, index) => {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <img src="sp.jpg250x180?text=Doctor+${index+1}" alt="${doc.name}">
+    <h3>${doc.name}</h3>
+    <p><strong>Specialization:</strong> ${doc.specialization}</p>
+    <p><strong>Location:</strong> ${doc.location}</p>
+    <p class="${doc.available ? 'available' : 'not-available'}">
+      ${doc.available ? 'Available' : 'Not Available'}
+    </p>
+  `;
+
+  listContainer.appendChild(card);
+});</script>
+</body>
+</html>

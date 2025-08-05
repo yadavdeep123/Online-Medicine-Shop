@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Concern Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .carousel-container {
+      position: relative;
+    }
+
+    .card-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 1rem;
+      padding: 10px 0;
+    }
+
+    .card-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .health-card {
+      flex: 0 0 auto;
+      width: 180px;
+      text-align: center;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      background-color: #fff;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .health-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .health-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .health-title {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      z-index: 1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .arrow-left {
+      left: -20px;
+    }
+
+    .arrow-right {
+      right: -20px;
+    }
+
+    @media (max-width: 576px) {
+      .arrow-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container my-5">
+  <h3 class="mb-4">Shop by Health Concerns</h3>
+
+  <div class="carousel-container">
+    <!-- ✅ Left arrow button -->
+    <button class="arrow-btn arrow-left" onclick="scrollLeft()">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <div class="card-slider" id="healthCardSlider">
+      <!-- Cards (your original card list) -->
+      <a href="diabetes.html" class="health-card">
+        <img src="https://onemg.gumlet.io/a56b26a0-30f1-4977-96f8-7acf1b3e0e02.png?format=auto" alt="Diabetes">
+        <div class="health-title">Diabetes</div>
+      </a>
+      <!-- Duplicate cards -->
+      <!-- ... Repeat your cards as in your code ... -->
+      <a href="heart.html" class="health-card">
+        <img src="https://onemg.gumlet.io/629aaf65-515f-4069-b730-28618f78597b.png?format=auto" alt="Heart Care">
+        <div class="health-title">Heart Care</div>
+      </a>
+      <a href="stomach.html" class="health-card">
+        <img src="https://onemg.gumlet.io/b251c9cf-8d88-4fb8-8c3c-7b328caa9f70.png?format=auto" alt="Stomach Care">
+        <div class="health-title">Stomach Care</div>
+      </a>
+      <a href="liver.html" class="health-card">
+        <img src="https://onemg.gumlet.io/573d8a1a-edd0-46a5-a0fe-01a1c2bcc8f2.png?format=auto" alt="Liver Care">
+        <div class="health-title">Liver Care</div>
+      </a>
+      <a href="bone-joint.html" class="health-card">
+        <img src="https://onemg.gumlet.io/a1af8b43-2836-483d-8709-99eff1cc6f70.png?format=auto" alt="Bone & Muscle Care">
+        <div class="health-title">Bone & Muscle Care</div>
+      </a>
+      <a href="kidney.html" class="health-card">
+        <img src="https://onemg.gumlet.io/96f9ed8a-ba62-426c-bd66-6762f40f3370.png?format=auto" alt="Kidney Care">
+        <div class="health-title">Kidney Care</div>
+      </a>
+      <a href="derma.html" class="health-card">
+        <img src="https://onemg.gumlet.io/730dbe50-4bdc-4fa8-9a09-93bc5d6c6f38.png?format=auto" alt="Derma Care">
+        <div class="health-title">Derma Care</div>
+      </a>
+      <a href="derma.html" class="health-card">
+        <img src="https://onemg.gumlet.io/8051e79c-6152-440e-b402-8d1ba8d7c82e.png?format=auto" alt="Derma Care 2">
+        <div class="health-title">Derma Care</div>
+      </a>
+    </div>
+
+    <!-- ✅ Right arrow button -->
+    <button class="arrow-btn arrow-right" onclick="scrollRight()">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  function scrollRight() {
+    document.getElementById('healthCardSlider').scrollBy({ left: 200, behavior: 'smooth' });
+  }
+
+  function scrollLeft() {
+    document.getElementById('healthCardSlider').scrollBy({ left: -200, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

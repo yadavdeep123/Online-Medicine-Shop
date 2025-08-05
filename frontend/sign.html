@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome Page</title>
+</head>
+<body>
+  <h1>Welcome, <span id="username"></span>!</h1>
+  <button onclick="signOut()">Sign Out</button>
+
+  <script>
+    // Simulate user login (just for demo)
+    localStorage.setItem("user", "Deepak");
+
+    // Display username
+    document.getElementById("username").textContent = localStorage.getItem("user");
+
+    // Sign out function
+    function signOut() {
+      localStorage.removeItem("user");  // Clear the login info
+      alert("You have been signed out.");
+      window.location.href = "login.html"; // Redirect to login page
+    }
+  </script>
+</body>
+</html>

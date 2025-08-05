@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Medicine Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+
+  body {
+      background-color: #f8f9fa;
+    }
+
+    .carousel-container {
+      position: relative;
+    }
+
+    .card-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 1rem;
+      padding: 10px 0;
+    }
+
+    .card-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .health-card {
+      flex: 0 0 auto;
+      width: 180px;
+      text-align: center;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      background-color: #fff;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .health-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .health-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .health-title {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      z-index: 1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* .arrow-left {
+      left: -20px;
+    } */
+
+    .arrow-right {
+      right: -20px;
+    }
+
+    @media (max-width: 576px) {
+      .arrow-btn {
+        display: none;
+      }
+    }
+
+    .checkup-section {
+      position: relative;
+    }
+
+    .scrolling-wrapper {
+      overflow-x: auto;
+      display: flex;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+    }
+
+    .checkup-card {
+      min-width: 250px;
+      margin-right: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .checkup-card:hover {
+      transform: scale(1.05);
+    }
+
+    .badge-safe {
+      background-color: #d1e7dd;
+      color: #0f5132;
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    .price {
+      font-size: 1rem;
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .discounted-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      width: 35px;
+      height: 35px;
+    }
+
+    .scroll-btn:hover {
+      background-color: #eee;
+    }
+
+    .scroll-left {
+      left: -10px;
+    }
+
+    .scroll-right {
+      right: -10px;
+    }
+
+
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 30px 0 15px;
+    }
+
+    .scroll-container {
+      position: relative;
+    }
+
+    .brand-scroll, .personal-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px;
+      scroll-behavior: smooth;
+    }
+
+    .brand-item, .personal-item {
+      flex: 0 0 auto;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-item:hover, .personal-item:hover {
+      transform: scale(1.1);
+    }
+
+    .brand-item img, .personal-item img {
+      height: 150px;
+      width: 150px;
+      border-radius: 20%;
+      object-fit: contain;
+      border: 1px solid #ddd;
+      gap: 20px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    .personal-item {
+      width: 120px;
+    }
+
+    .personal-item img {
+      width: 150px;
+      height: 150px;
+      
+    }
+
+    .category-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      padding: 5px 10px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    /* .arrow-left {
+      left: -15px;
+    } */
+
+    .arrow-right {
+      right: -15px;
+    }
+
+    @media (max-width: 576px) {
+      .arrow-btn {
+        display: none;
+      }
+    }
+
+
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .checkup-section {
+      position: relative;
+    }
+
+    .scrolling-wrapper {
+      overflow-x: auto;
+      display: flex;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+    }
+
+    .checkup-card {
+      min-width: 250px;
+      margin-right: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .checkup-card:hover {
+      transform: scale(1.05);
+    }
+
+    .badge-safe {
+      background-color: #d1e7dd;
+      color: #0f5132;
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    .price {
+      font-size: 1rem;
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .discounted-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      width: 35px;
+      height: 35px;
+    }
+
+    .scroll-btn:hover {
+      background-color: #eee;
+    }
+
+    .scroll-left {
+      left: -10px;
+    }
+
+    .scroll-right {
+      right: -10px;
+    }
+
+/* imgcard style*/
+     body {
+      background-color: #f8f9fa;
+    }
+
+    .deals-container {
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .card-scroll {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 16px;
+      padding: 10px;
+    }
+
+    .deal-card {
+      min-width: 200px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-align: center;
+      background: white;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .deal-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .deal-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .deal-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* .arrow-left {
+      left: -10px;
+    }
+
+    .arrow-right {
+      right: -10px;
+    } */
+
+    @media (max-width: 576px) {
+      .arrow-btn {
+        display: none;
+      }
+    }
+
+    .ellipsis-2-lines {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 2.8em;
+      line-height: 1.4em;
+    } 
+
+    .old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.discount {
+  color: green;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.new-price {
+  display: block;
+  font-size: 15px;
+  color: #000;
+  font-weight: bold;
+  margin-top: 4px;
+  text-align: center;
+}
+
+
+  </style>
+</head>
+<body>
+
+
+  <div class="container my-5">
+  <h3 class="mb-4">Shop by Health Concerns</h3>
+
+  <!-- <button class="scroll-btn scroll-left" onclick="scrollCheckups(-300)">&lt;</button>
+  <button class="scroll-btn scroll-right" onclick="scrollCheckups(300)">&gt;</button> -->
+  <div class="scrolling-wrapper" id="scrollContainer">
+
+  <div class="carousel-container">
+    </button>
+    <div class="card-slider" id="healthCardSlider">
+      <a href="diabetes.html" class="health-card">
+        <img src="https://onemg.gumlet.io/a56b26a0-30f1-4977-96f8-7acf1b3e0e02.png" alt="Diabetes">
+        <div class="health-title">Diabetes</div>
+      </a>
+      <a href="heart.html" class="health-card">
+        <img src="https://onemg.gumlet.io/629aaf65-515f-4069-b730-28618f78597b.png" alt="Heart Care">
+        <div class="health-title">Heart Care</div>
+      </a>
+      <a href="stomach.html" class="health-card">
+        <img src="https://onemg.gumlet.io/b251c9cf-8d88-4fb8-8c3c-7b328caa9f70.png" alt="Stomach Care">
+        <div class="health-title">Stomach Care</div>
+      </a>
+      <a href="liver.html" class="health-card">
+        <img src="https://onemg.gumlet.io/573d8a1a-edd0-46a5-a0fe-01a1c2bcc8f2.png" alt="Liver Care">
+        <div class="health-title">Liver Care</div>
+      </a>
+      <a href="bone-joint.html" class="health-card">
+        <img src="https://onemg.gumlet.io/a1af8b43-2836-483d-8709-99eff1cc6f70.png" alt="Bone & Muscle Care">
+        <div class="health-title">Bone & Muscle Care</div>
+      </a>
+      <a href="kidney.html" class="health-card">
+        <img src="https://onemg.gumlet.io/96f9ed8a-ba62-426c-bd66-6762f40f3370.png" alt="Kidney Care">
+        <div class="health-title">Kidney Care</div>
+      </a>
+      <a href="derma.html" class="health-card">
+        <img src="https://onemg.gumlet.io/730dbe50-4bdc-4fa8-9a09-93bc5d6c6f38.png" alt="Derma Care">
+        <div class="health-title">Derma Care</div>
+      </a>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Full Body Healt Checkups -->
+<div class="container my-5 checkup-section">
+  <h4 class="mb-3">Full Body Health Checkups</h4>
+  <!-- <button class="scroll-btn scroll-left" onclick="scrollCheckups(-300)">&lt;</button>
+  <button class="scroll-btn scroll-right" onclick="scrollCheckups(300)">&gt;</button> -->
+  <div class="scrolling-wrapper" id="scrollContainer">
+    <div class="checkup-card" onclick="location.href='test1.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Comprehensive Gold Full Body</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹4499</p>
+      <p class="discounted-price">₹2249 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test2.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Good Health Silver Package</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹1399</p>
+      <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test3.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Comprehensive Silver Full Body</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹3799</p>
+      <p class="discounted-price">₹1899 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test4.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Comprehensive Platinum Full Body</h6>
+        <span class="badge-safe">SAFE</span>
+      </div>
+      <p class="mb-1 price">₹7199</p>
+      <p class="discounted-price">₹3599 <small class="text-success">50% OFF</small></p>
+    </div>
+    <div class="checkup-card" onclick="location.href='test5.html'">
+      <div class="d-flex justify-content-between">
+        <h6>Good Health Platinum</h6>
+      </div>
+      <p class="mb-1 price">₹2999</p>
+      <p class="discounted-price">₹1499 <small class="text-success">50% OFF</small></p>
+    </div>
+  </div>
+  <div class="text-end mt-2">
+    <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+  </div>
+</div>
+
+  <div class="container">
+    <!-- Featured Brands -->
+    <div class="section-title">Featured Brands</div>
+    <div class="brand-scroll">
+      <div class="brand-item" onclick="window.location.href='brand1.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1752905964_Himalaya.png?format=auto" alt="Himalaya">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand2.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1752830174_Protinex1.png?format=auto" alt="Protinex">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand3.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1752830182_Cetaphil.png?format=auto" alt="Cetaphil">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand4.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1752905954_Morepen.png?format=auto" alt="Dr. Morepen">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand5.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1752731965_Healthkart.png?format=auto" alt="Healthkart">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand6.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1752555897_Organic+India.png?format=auto" alt="Organic India">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand7.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1753164051_Omron.png?format=auto" alt="Dabur">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand1.html'">
+        <img src="https://onemg.gumlet.io/2025-07%2F1752731975_Dabur.png?format=auto" alt="Himalaya">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand2.html'">
+        <img src="https://onemg.gumlet.io/diagnostics%2F2024-06%2F1719206984_Tata+1mg.png?format=auto" alt="Protinex">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand3.html'">
+        <img src="https://onemg.gumlet.io/diagnostics%2F2024-06%2F1719206972_tejasya.png?format=auto" alt="Cetaphil">
+     
+      </div>
+    </div>
+
+    <!-- Personal Care -->
+    <div class="section-title">Personal Care</div>
+    <div class="scroll-container">
+      <!-- <button class="arrow-btn arrow-left" onclick="scrollLeft()">&lt;</button> -->
+      <div class="personal-scroll" id="personalScroll">
+        <div class="personal-item" onclick="window.location.href='skin-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443647_skinn.webp?format=auto   " alt="Skin Care">
+          <div class="category-title">Skin Care</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='hair-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443670_hairr.webp?format=auto" alt="Hair Care">
+          <div class="category-title">Hair Care</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='sexual-wellness.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443681_sexuall.webp?format=auto" alt="Sexual Wellness">
+          <div class="category-title">Sexual Wellness</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='oral-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443695_orall.webp?format=auto" alt="Oral Care">
+          <div class="category-title">Oral Care</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='elderly-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443705_elderly.webp?format=auto" alt="Elderly Care">
+          <div class="category-title">Elderly Care</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='baby-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443714_baby.webp?format=auto" alt="Baby Care">
+          <div class="category-title">Baby Care</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='women-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443722_womenn.webp?format=auto" alt="Women Care">
+          <div class="category-title">Women Care</div>
+        </div>
+
+         <div class="personal-item" onclick="window.location.href='women-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443735_menn.webp?format=auto" alt="Women Care">
+          <div class="category-title">Women Care</div>
+        </div>
+
+         <div class="personal-item" onclick="window.location.href='women-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443746_pett.webp?format=auto" alt="Women Care">
+          <div class="category-title">Women Care</div>
+        </div>
+
+         <div class="personal-item" onclick="window.location.href='women-care.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2023-11%2F1699443722_womenn.webp?format=auto" alt="Women Care">
+          <div class="category-title">Women Care</div>
+        </div> 
+      </div>
+      <!-- <button class="arrow-btn arrow-right" onclick="scrollRight()">&gt;</button> -->
+    </div>
+  </div>
+
+    <div class="container my-5 checkup-section">
+    <h4 class="mb-3">Pathology Tests | Up to 70% off</h4>
+
+    <!-- Scroll buttons -->
+    <!-- <button class="scroll-btn scroll-left" onclick="scrollLeft()">&lt;</button>
+    <button class="scroll-btn scroll-right" onclick="scrollRight()">&gt;</button> -->
+
+    <!-- Scrollable Cards -->
+    <div class="scrolling-wrapper" id="scrollContainer">
+
+      <div class="checkup-card" onclick="location.href='test1.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Comprehensive Gold Full Body</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹4499</p>
+        <p class="discounted-price">₹2249 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test4.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Comprehensive Platinum Full Body</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹7199</p>
+        <p class="discounted-price">₹3599 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test5.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Platinum</h6>
+        </div>
+        <p class="mb-1 price">₹2999</p>
+        <p class="discounted-price">₹1499 <small class="text-success">50% OFF</small></p>
+      </div>
+    </div>
+
+    <div class="container deals-container">
+  <h4 class="mb-3">Super Saving Deals</h4>
+
+  <!-- Left Arrow -->
+  <!-- <button class="scroll-btn scroll-left" onclick="scrollLeft()">&lt;</button>
+    <button class="scroll-btn scroll-right" onclick="scrollRight()">&gt;</button> -->
+  <!-- Super saving deals -->
+  <div class="card-scroll" id="dealScroll">
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/f483f14f-bb96-4074-b464-3d04aaa4107f.jpeg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Combo Pack of Tata 1mg Hot Water Bag</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/70522d56ceff4e7992f38618612a2a79.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Combo Pack of Tata 1mg Pain Relief Spray</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/c45739082db14ba3bd65b583f7ce7b67.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Pain Relief Gel for Lower Back Pain</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/xx6fevxvibax95onp1fz.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Gemshine Soft Gelatin Capsule</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/glf3gtf8fxprj5nwrrgq.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Prega News Advance Pregnancy Rapid</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/64735dde-84b5-48c8-b9f8-c028ca6d310f.jpeg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Combo Pack of Tata 1mg Pain Relief Spray</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/49989d8f1a9847e6a59d3cc5e4697a5c.jpg">
+      <p class="ellipsis-2-lines">Clocip Anti-Fungal Dusting Powder | For Skin Infections, Itching, Rashes</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/f71ea55f57ba4f1eaa2d3b5f3e590ef7.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Cipcal D3 (Cholecalciferol) Granules for Bone, Joint and Muscle Health</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/2f8e3c11ca3f4f40865cd44dd8ad693a.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Combo Pack of Tata 1mg Elbow Support Large & Tata 1mg Pain Relief Spray (100gm)</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="//onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/b18bde012a9a442e8382f4c3b9ebc896.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Prolyte ORS Combo Pack of Ready To Drink for Body Fluid & Electrolyte Replenishment Flavour Apple & Orange</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/usd56t3gsxyajdcxn8pt.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Combo Pack of Cipcal 500 Tablet (15) & Neurobion Forte Tablet (30)</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+  </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- Personal Care -->
+    <div class="section-title">Popular categories</div>
+    <div class="scroll-container">
+      <!-- <button class="arrow-btn arrow-left" onclick="scrollLeft()">&lt;</button> -->
+      <div class="personal-scroll" id="personalScroll">
+        <div class="personal-item" onclick="window.location.href='skin-care.html'">
+          <img src="https://onemg.gumlet.io/859adc35-4c39-4094-a74d-281ffff9a3e6.png?format=auto" alt="Skin Care">
+          <div class="category-title">Best offers</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='hair-care.html'">
+          <img src="https://onemg.gumlet.io/67be6470-4f74-4a2e-a37a-ececb775afeb.png?format=auto" alt="Hair Care">
+          <div class="category-title">Vitamins & Supplements</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='sexual-wellness.html'">
+          <img src="https://onemg.gumlet.io/diagnostics%2F2024-01%2F1706010756_Women+care.jpg?format=auto" alt="Sexual Wellness">
+          <div class="category-title">Nutritional Drinks</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='oral-care.html'">
+          <img src="https://onemg.gumlet.io/624f6cd2-f857-4f8c-a689-75c849516ea8.png?format=auto" alt="Oral Care">
+          <div class="category-title">Skin Care</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='elderly-care.html'">
+          <img src="https://onemg.gumlet.io/4e4b7cd8-0885-42c2-8915-65b7355fc1d8.png?format=auto" alt="Elderly Care">
+          <div class="category-title">Hair Care</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='baby-care.html'">
+          <img src="https://onemg.gumlet.io/33d8bac6-26c1-4828-8b39-4f6183430833.png?format=auto" alt="Baby Care">
+          <div class="category-title">pain Relief</div>
+        </div>
+        <div class="personal-item" onclick="window.location.href='women-care.html'">
+          <img src="https://onemg.gumlet.io/263346eb-82a4-4cb2-9611-63fa046beaf2.png?format=auto" alt="Women Care">
+          <div class="category-title">Ayurveda Products</div>
+        </div>
+
+         <div class="personal-item" onclick="window.location.href='women-care.html'">
+          <img src="https://onemg.gumlet.io/59e2ffed-ab85-496d-9423-d97cd0305b52.png?format=auto" alt="Women Care">
+          <div class="category-title">Women Care</div>
+        </div>
+
+         <div class="personal-item" onclick="window.location.href='women-care.html'">
+          <img src="https://onemg.gumlet.io/f1683989-9e0d-4a8b-9c6c-55ef674cfc0f.png?format=auto" alt="Women Care">
+          <div class="category-title">Homeopathy</div>
+        </div> 
+      </div>
+      <!-- <button class="arrow-btn arrow-right" onclick="scrollRight()">&gt;</button> -->
+    </div>
+  </div>
+
+
+   <!-- Skin care products -->
+  
+  <h4 class="mb-3">Skin care products</h4>
+  <div class="card-scroll" id="dealScroll">
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/e30284a0c35441f28a513513a2a10483.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Acne-UV Sunscreen with Broad Spectrum UVA/UVB Protection | Oil Free & Water Resistant | Gel SPF 50</p>
+      <!-- <p><b>₹520</b> <span style="color: green;">25% off</span></p> -->
+        <p>MRP <span class="old-price">₹915</span>
+        <span class="discount">20% OFF</span><br>
+        <span class="new-price">₹733</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/358fc3b827bf4189a14702caee65e522.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">The Derma Co 1% Hyaluronic Sunscreen Aqua Gel with Vitamin E | Fragrance-Free</p>
+      <!-- <p><b>₹240</b> <span style="color: green;">37% off</span></p> -->
+       <p>MRP <span class="old-price">₹499</span>
+        <span class="discount">24% OFF</span><br>
+        <span class="new-price">₹380</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/c23d746e7733498fbe08d585cec8d675.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Photostable Gold Matte Finish Sunscreen Gel | PA+++ SPF 55n</p>
+      <!-- <p><b>₹155</b>   <span style="color: green;">35% off</span></p> -->
+        <p>MRP <span class="old-price">₹881</span>
+        <span class="discount">10% OFF</span><br>
+        <span class="new-price">₹793</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/88216bf6e3694ff9a66125b4045e9373.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Sesderma Azelac RU Liposomal Serum with Tranexamic Acid Booster | For Skin Depigmentation</p>
+      <!-- <p><b>₹191</b> <span style="color: green;">40% off</span></p> -->
+        <p>MRP <span class="old-price">₹2650</span>
+        <span class="discount">15% OFF</span><br>
+        <span class="new-price">₹2255</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/21e177529079430cab79f5055e8587a5.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">C-Vit Facial Liposomal Serum with AntiOx Booster System | Skin Brightening Face Care Product</p>
+      <!-- <p><b>₹69</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹2850</span>
+        <span class="discount">20% OFF</span><br>
+        <span class="new-price">₹2280</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/b52913282bb04d18bcabdde6431b001b.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Cetaphil Moisturising Lotion with Avocado Oil, Vitamin E, B3 & B5 | For Normal to Combination, Sensitive Skin</p>
+      <!-- <p><b>₹320</b> <span style="color: green;">40% off</span></p> -->
+        <p>MRP <span class="old-price">₹1699</span>
+        <span class="discount">10% OFF</span><br>
+        <span class="new-price">₹1530</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/b136454dfe29475fb31ee05e6cae380f.jpg">
+      <p class="ellipsis-2-lines">UV Doux Silicone Sunscreen Gel SPF 50 PA+++ | Oil-Free, Matte Finish & Water-Resistant</p>
+      <!-- <p><b>₹66.8</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹799</span>
+        <span class="discount">25% OFF</span><br>
+        <span class="new-price">₹599</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/80e2d53e1c36474eb3e6b9480a7ef2e3.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Cetaphil Moisturising Cream | Face Care Product for Dry to Normal, Sensitive Skin Dry to Normal, Sensitive Skin</p>
+      <!-- <p><b>₹24.7</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹699</span>
+        <span class="discount">11% OFF</span><br>
+        <span class="new-price">₹595</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/9afa7a96575444aeae3f821e39b412bf.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Photostable Pro+ Hydragel Sunscreen SPF 80+</p>
+      <!-- <p><b>₹360</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹974</span>
+        <span class="discount">10% OFF</span><br>
+        <span class="new-price">₹877</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/5dd039157bfc49ecacdd5f009dd0d73d.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Minimalist 10% Vitamin C Face Serum | Brightens Skin</p>
+      <!-- <p><b>₹44.1</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹699</span>
+        <span class="discount">10% OFF</span><br>
+        <span class="new-price">₹629</span>
+      </p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/578b88f70cdc4735bc9cca17a627f580.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">The Derma Co 1% Hyaluronic Sunscreen Aqua Gel with Vitamin E | Fragrance-Free SPF 50 PA++++</p>
+      <!-- <p><b>₹112</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹299</span>
+        <span class="discount">21% OFF</span><br>
+        <span class="new-price">₹236</span>
+      </p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+    
+
+   <!-- Popular Combo Deals-->
+     <h4>Popular Combo Deals</h4>
+  <div class="card-scroll" id="dealScroll">
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/97fd33b22a134f6abfad3306a94a9c82.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Combo Pack of Volini Spray (100gm) & Tata 1mg Knee Support Large</p>
+      <!-- <p><b>₹520</b> <span style="color: green;">25% off</span></p> -->
+        <p>MRP <span class="old-price">₹673</span>
+        <span class="discount">15% OFF</span><br>
+        <span class="new-price">₹572</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cr9a2p0evnuzwvw5ksp1.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Acne Care Combo of Cetaphil Oily Skin Cleanser 125ml and Klm Klin Face Wash 100ml</p>
+      <!-- <p><b>₹240</b> <span style="color: green;">37% off</span></p> -->
+        <p>MRP <span class="old-price">₹1019</span>
+        <span class="discount">6% OFF</span><br>
+        <span class="new-price">₹955</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/d9c05847911744cdbff78c50066f270b.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Combo Pack of Tata 1mg Tejasya Digestive Care Syrup (200ml) & Zandu Nityam Tablet (30)</p>
+      <!-- <p><b>₹155</b> <span style="color: green;">37% off</span></p> -->
+        <p>MRP <span class="old-price">₹310</span>
+        <span class="discount">15%% OFF</span><br>
+        <span class="new-price">₹265</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/797f87b4d6904f8a9530cbfc23ac4df8.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Combo Pack of Limcee Chewable Tablet Orange (15) & Becosules Z Capsule (20)</p>
+      <!-- <p><b>₹191</b> <span style="color: green;">37% off</span></p> -->
+        <p>MRP <span class="old-price">₹87.36</span>
+        <span class="discount">5% OFF</span><br>
+        <span class="new-price">₹83.2</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/if0qou7t1ptcaaowcigp.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Accu-Chek Active Combo of Glucometer with 10 Test Strip Free and 50 Test Strips</p>
+      <!-- <p><b>₹69</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹3466</span>
+        <span class="discount">40% OFF</span><br>
+        <span class="new-price">₹2067</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/38b86c6a33f744afac80ed36d4bb87ba.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Tata 1mg Diabetes Care Combo Pack for Cholesterol & Blood Sugar Management</p>
+      <!-- <p><b>₹320</b> <span style="color: green;">40% off</span></p> -->
+        <p>MRP <span class="old-price">₹735</span>
+        <span class="discount">19% OFF</span><br>
+        <span class="new-price">₹598</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/lvtn5rrf1guolsh7lrfx.jpg">
+      <p class="ellipsis-2-lines">OneTouch Select Plus Simple Glucometer Value Pack (with 10 Test Strip Free) + 1 Pack of 50 Test Strip + 2 Pack of 25 Lancet</p>
+      <!-- <p><b>₹66.8</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹2692</span>
+        <span class="discount">6% OFF</span><br>
+        <span class="new-price">₹2530</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/oexechydeypou9aw45xc.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Pain Relief Combo of Dr Ortho Oil 120ml and Organic India Turmeric Formula 60 Veg Capsule</p>
+      <!-- <p><b>₹24.7</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹620</span>
+        <span class="discount">9% OFF</span><br>
+        <span class="new-price">₹567</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/qdkxnbhl24dgn02m7fc4.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Anti-oxidants Combo of Organic India Lemon Ginger Tulsi Green Tea 25 Tea Bag and Dabur Honey 1kg</p>
+      <!-- <p><b>₹360</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹620</span>
+        <span class="discount">8% OFF</span><br>
+        <span class="new-price">₹664</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/g6phmkjrdbw3x4nngxlr.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Oral Care Combo of Listerine Mouth Wash Cool Mint 500ml and Sensodyne Repair & Protect Toothpaste 100gm</p>
+      <!-- <p><b>₹44.1</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹655</span>
+        <span class="discount">1% OFF</span><br>
+        <span class="new-price">₹648</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/qir6i2zlhzeddxa4mqt0.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Immunity Care Combo of 1mg Panch Tulsi 30ml Drops and Patanjali Ayurveda Giloy Ghanvati 60 Tablet</p>
+      <!-- <p><b>₹112</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹272</span>
+        <span class="discount">29% OFF</span><br>
+        <span class="new-price">₹196</span>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+    
+        <!-- Top deals of pain relief and cough & cold-->
+
+    <h4>Top deals of pain relief and cough & cold </h4>
+    <div class="card-scroll" id="dealScroll">
+  
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/4f52de3934a24db98550be0e08ab6044.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Volini Spray for Sprain, Muscle and Joint Pain Relief | Quick Action | Long-Lasting Relief | Bone, Joint & Muscle Careg</p>
+      <!-- <p><b>₹520</b> <span style="color: green;">25% off</span></p> -->
+        <p>MRP <span class="old-price">₹373</span>
+        <span class="discount">19% OFF</span><br>
+        <span class="new-price">₹302</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/037ce7d986d94696be8e9cac216c1368.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Hoop Mess Less Pain Roll On (50ml Each) Bottle</p>
+      <!-- <p><b>₹240</b> <span style="color: green;">37% off</span></p> -->
+        <p>MRP <span class="old-price">₹490</span>
+        <span class="discount">19% OFF</span><br>
+        <span class="new-price">₹396</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/278b211d32c64c0884dc4b7befcb7c40.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Cofsils Lozenges for Quick Relief from Sore Throat Orange</p>
+      <!-- <p><b>₹155</b></p> -->
+        <p>MRP <span class="old-price">₹38</span>
+        <span class="discount">14% OFF</span><br>
+        <span class="new-price">₹32.5</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/61191b930a2c4df1a40613b3149a7e2f.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Moov Pain Relief Ointment for Back Pain, Joint Pain, Knee Pain, Muscle Pain</p>
+      <!-- <p><b>₹191</b></p> -->
+        <p>MRP <span class="old-price">₹248</span>
+        <span class="discount">10% OFF</span><br>
+        <span class="new-price">₹223</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/d030279dd8ed47ab9d2f427faea92d83.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Moov 100% Ayurvedic Pain Relief Spray | For Back Pain, Joint Pain, Knee Pain & Muscle Pain</p>
+      <!-- <p><b>₹69</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹362</span>
+        <span class="discount">15% OFF</span><br>
+        <span class="new-price">₹308</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/rnel0jwng6x8y3lmn5kf.png" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Healthtokri Electric Rechargeable Heating Gel Warm Bag</p>
+      <!-- <p><b>₹320</b> <span style="color: green;">40% off</span></p> -->
+        <p>MRP <span class="old-price">₹575</span>
+        <span class="discount">57% OFF</span><br>
+        <span class="new-price">₹249</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/c6b3b4f4cdd4464580602592651b768b.jpg">
+      <p class="ellipsis-2-lines">Cofsils Lozenges for Quick Relief from Sore Throat Lemon Ginger</p>
+      <!-- <p><b>₹66.8</b> <span style="color: green;">42% off</span></p> -->
+        <p>MRP <span class="old-price">₹299</span>
+        <span class="discount">21% OFF</span><br>
+        <span class="new-price">₹236</span>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/f71ea55f57ba4f1eaa2d3b5f3e590ef7.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Cipcal D3 (Cholecalciferol) Granules for Bone, Joint and Muscle Health</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/2f8e3c11ca3f4f40865cd44dd8ad693a.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Combo Pack of Tata 1mg Elbow Support Large & Tata 1mg Pain Relief Spray (100gm)</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="//onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/b18bde012a9a442e8382f4c3b9ebc896.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Prolyte ORS Combo Pack of Ready To Drink for Body Fluid & Electrolyte Replenishment Flavour Apple & Orange</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/usd56t3gsxyajdcxn8pt.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Combo Pack of Cipcal 500 Tablet (15) & Neurobion Forte Tablet (30)</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+   
+    <!-- Flash sale deals See all-->
+
+    <h4 class="mb-3">Flash sale deals See all</h4>
+    <div class="card-scroll" id="dealScroll">
+  
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/mr3jqsunlntsz2tw7sxw.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Baidyanath (Jhansi) Shilajit | For Strength, Stamina & Vigour</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/e7f98648826e4c54a084eb2df8f5d896.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Centrum Women Vegetarian Tablets for Muscles, Heart, & Immunity | World's No.1 Multivitamin & Multimineral</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/dc307fcd6716499bb996d3b2a96031ce.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Dabur Jamun Neem Karela Ayurvedic Juice | For Healthy Glucose Levels, Digestion, Metabolism & Immunity</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/oedvohtv68cvmyupukv3.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Kerala Ayurveda Myaxyl Oil | For Instant Muscle & Joint Pain Relief</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/5a68f0b2a7394c13bd9bca4de28fe0df.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">A to Z NS+ Daily Multivitamin Tablets – Zinc & Vitamin C for Immunity, B-Complex & Essential Nutrients for Energy & Wellness</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/b136454dfe29475fb31ee05e6cae380f.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">UV Doux Silicone Sunscreen Gel SPF 50 PA+++ | Oil-Free, Matte Finish & Water-Resistant</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/82e8f522e29b43a98e330bd2b5b3d50b.jpg">
+      <p class="ellipsis-2-lines">Contour Plus Blood Glucose Test Strip</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/pharmacy-production-rxs%2F1752815219_crop_685.png" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Salmon Omega 3 Fish Oil 1000mg Capsule | High absorption | Helps manage cholesterol | by Tata 1mg</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/874c73ab2b3747f68d49263ab2c475ca.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Zincovit Tablet with Multivitamin, Multimineral & Grape Seed Extract</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/c2661631-300c-45a4-a7c3-f46fe9fca127.jpeg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Ahaglow Advanced Skin Rejuvenating Face Wash | Effective Pore Cleanser | SLS & Paraben-Free Face Care Product</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/2267489995104a1ea4eae73adca885a3.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Chemist At Play Daily Exfoliating Body Wash</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+<!-- Radiology Test -->
+<div class="container my-5 checkup-section">
+    <h4 class="mb-3">Radiology Tests | Up to 60% offs</h4>
+
+    <!-- Scroll buttons -->
+    <button class="scroll-btn scroll-left" onclick="scrollLeft()">&lt;</button>
+    <button class="scroll-btn scroll-right" onclick="scrollRight()">&gt;</button>
+
+    <!-- Scrollable Cards -->
+    <div class="scrolling-wrapper" id="scrollContainer">
+
+      <div class="checkup-card" onclick="location.href='test1.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Comprehensive Gold Full Body</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹4499</p>
+        <p class="discounted-price">₹2249 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test5.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Platinum</h6>
+        </div>
+        <p class="mb-1 price">₹2999</p>
+        <p class="discounted-price">₹1499 <small class="text-success">50% OFF</small></p>
+      </div>
+
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- Explore Something New -->
+    <h4 class="mb-3">Explore Something New</h4>
+    <div class="card-scroll" id="dealScroll">
+  
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/79a925661de14503945c7d77bc4666ff.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Durex Elevate Performa Shilajit Capsule for Men</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/daf32bd1890e4b83a92ea4c96258bb3b.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Pilgrim 3% Redensyl & 4% Anagain Advance Hair Growth Serum</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/46446bed3296457487edab0ccb27dc74.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">PentaSure DM Diabetes Care Sachet (50gm Each) Vanilla</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/92c4e1671c4d41a1a606ba3d7b3cd0a8.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Minimalist 05% Niacinamide Face Serum | Reduces Dullness and Acne Spots</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/dded644d94194c9caaac5d37e0fa9b9a.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Durex Elevate Climax Delay Spray for Men</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/f483f14f-bb96-4074-b464-3d04aaa4107f.jpeg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Combo Pack of Tata 1mg Hot Water Bag & Tata 1mg Pain Relief Gel (75gm)</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/ca7148aab9874611bfa87e2d0446b02d.jpg">
+      <p class="ellipsis-2-lines">Zandu Fast Pain Relief Ultra Strong Gel</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/d12801b2817445feb76bcb9bb7582bb4.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Nutraloid Slim Powder Vanilla Delight</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/7ff09067d97a44b191d46b5d2b389407.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">mCaffeine Coffee Body Wash | De-Tan & Deep Cleansing Shower Gel with Almonds</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/49f2b241bbf84e15b8c5625e93bf2a35.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Fish Oil Advanced Capsules for Beginners | by Tata 1mg</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/27c9410759754137914ba3cf2db1f270.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Travel Health & Energy Kit - Orange</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+
+  <!-- In The Spotlight -->
+
+    <h4 class="mb-3">In The Spotlight</h4>
+    <div class="card-scroll" id="dealScroll">
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/2267489995104a1ea4eae73adca885a3.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Chemist At Play Daily Exfoliating Body Wash</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/6f2f500445be42849dcbd576e83f7046.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Protinex Diabetes Care Protein Powder with Vitamins | For Strength, Blood Sugar & Weight Management | Nutrition Formula Powder</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/457ff8bd1ed6415faa71dea953dba6a3.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Fixderma Salyzap 2% Salicyclic Acid Face Cleanser for Acne Prone Skin|Fights with Acne & Controls Oil</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/d030279dd8ed47ab9d2f427faea92d83.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Moov 100% Ayurvedic Pain Relief Spray | For Back Pain, Joint Pain, Knee Pain & Muscle Pain</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/5e019861779e42649f3c82d9ec3a9a57.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Wellbeing Nutrition Melts Into Vegan Vitamin B12 + Folate | Oral Thin Strip for Energy, Brain & Nerve Function | Sugar-Free | Flavour Misty Orange Mint</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+     <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/4f52de3934a24db98550be0e08ab6044.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Volini Spray for Sprain, Muscle and Joint Pain Relief | Quick Action | Long-Lasting Relief | Bone, Joint & Muscle Care</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/037ce7d986d94696be8e9cac216c1368.jpg">
+      <p class="ellipsis-2-lines">Hoop Mess Less Pain Roll On (50ml Each) Bottle</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/8d108e6547214920ab53721142d2f38e.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Perfectil Skin, Hair, Nail Supplement with Biotin, Vitamin C & Micronutrients | Gluten-Free Tablet</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/358fc3b827bf4189a14702caee65e522.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">The Derma Co 1% Hyaluronic Sunscreen Aqua Gel with Vitamin E | Fragrance-Free</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/dcfad2a412304f0fab7e88847da34966.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Kerala Ayurveda Myaxyl Oil | For Instant Muscle & Joint Pain Relief</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/878e902a7a2d43c2a117eb6b0361be81.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Herbal Hills Arthrohills Joint Support Soft Capsule</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- Ayurveda Top Brands -->
+    <div class="container">
+    <!-- Featured Brands -->
+    <div class="section-title">Ayurveda Top Brands</div>
+    <div class="brand-scroll">
+      <div class="brand-item" onclick="window.location.href='brand1.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648261/onneibznnitqsn5twumi.png?format=auto" alt="Himalaya">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand2.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648303/dekl61bd9thu21vmypkm.png?format=auto" alt="Protinex">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand3.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648345/idgjl700nkz6w8lzvjwc.png?format=auto" alt="Cetaphil">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand4.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648394/yv774ayhbypuxi28dhs0.png?format=auto" alt="Dr. Morepen">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand5.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648428/xemgonnppssxvagkjxzd.png?format=auto" alt="Healthkart">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand6.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1630927780/guiy84rk41kgofd5atft.png?format=auto" alt="Organic India">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand7.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648455/shxhntpjye31tu8frfjs.png?format=auto" alt="Dabur">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand1.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648507/kvwlak2daqdzaflvgx2u.png?format=auto" alt="Himalaya">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand2.html'">
+        <img src="https://onemg.gumlet.io/image/upload/v1627648521/ktzih4wnm4xfynusrep6.png?format=auto" alt="Protinex">
+      </div>
+      <div class="brand-item" onclick="window.location.href='brand3.html'">
+        <img src="https://onemg.gumlet.io/diagnostics%2F2024-06%2F1719206984_Tata+1mg.png?format=auto" alt="Cetaphil">
+     
+      </div>
+    </div>
+
+    <!-- Deals of the day -->
+       <h4 class="mb-3">Deals of the day</h4>
+    <div class="card-scroll" id="dealScroll">
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/75333828c2e94580b0850111a707eec9.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Colgate Gentle Enamel Ultra Soft</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/pharmacy-production-rxs%2F1738306920_crop_372.png" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Nivea Soft Light Moisturiser for Face, Body & Hands | Quick Absorbing Face Care Product for All Skin Types</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/951c5595eda543e5b42f312227c5c1f8.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Aveeno Baby Daily Moisture Wash & Shampoo | For Sensitive Skin | Tear-Free Formula</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/a17c15fc9c494a28b82980d277a77ca8.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Bare Anatomy Anti-Dandruff Shampoo</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/8b39c5e25df7491b92f921812462a241.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Colgate Gentle Ultra Foam Ultra Soft Toothbrush</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/5ac3800443e64f488e5d24b40d35985d.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Pilgrim Shampoo Amazonian Beauty Patua & Keratin Smoothening</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/9a2d62bca638474cbcfa95647da155e2.jpg">
+      <p class="ellipsis-2-lines">Chemist At Play 1% Salicylic Acid Acne Control Body Wash</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/munaamsb1ueunwtrxczq.png" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Control D Blood Glucose Test Strip (Only Strips) | Diabetes Monitoring Devices</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/fcc145f533d244a1b35ec764b2353867.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Prolyte ORS Ready To Drink for Body Fluid & Electrolyte Replenishment | For Stomach Care & Dehydration | Flavour Nimbu Paani</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/aewp9zy557pnckqm7tpj.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">I-Feel Gentle Intimate Wash | Safe during Pregnancy | 3.5 pH Balance | Women's Intimate Range</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/ogmfxgoe4tonxdmumk47.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">mCaffeine Combo Pack of Coffee Body Scrub (100gm) & Espresso Coffee Face Scrub Duo (75gm)</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- Health Checkups -->
+   <div class="container my-5 checkup-section">
+    <h4 class="mb-3">Health Checkups</h4>
+
+    <!-- Scroll buttons -->
+    <button class="scroll-btn scroll-left" onclick="scrollLeft()">&lt;</button>
+    <button class="scroll-btn scroll-right" onclick="scrollRight()">&gt;</button>
+
+    <!-- Scrollable Cards -->
+    <div class="scrolling-wrapper" id="scrollContainer">
+
+      <div class="checkup-card" onclick="location.href='test1.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Comprehensive Gold Full Body</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹4499</p>
+        <p class="discounted-price">₹2249 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test2.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Silver Package</h6>
+          <span class="badge-safe">SAFE</span>
+        </div>
+        <p class="mb-1 price">₹1399</p>
+        <p class="discounted-price">₹699 <small class="text-success">50% OFF</small></p>
+      </div>
+
+      <div class="checkup-card" onclick="location.href='test5.html'">
+        <div class="d-flex justify-content-between">
+          <h6>Good Health Platinum</h6>
+        </div>
+        <p class="mb-1 price">₹2999</p>
+        <p class="discounted-price">₹1499 <small class="text-success">50% OFF</small></p>
+      </div>
+
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- Cetaphil top sellers -->
+        <h4 class="mb-3">Organic India top sellers</h4>
+    <div class="card-scroll" id="dealScroll">
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/d0890edb66064785a490824000bfbfe2.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Organic India Ashwagandha Ayurvedic Veg Capsule | Relieves Stress & Builds Vitality</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/3a4dd9aa62cb4df1a05f78643e74c8c6.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Organic India Chyawanprash | Helps Support Immunity</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/7b695eb2916e469bb2874197a0eb5714.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Organic India Moringa Capsule | Supports Energy Levels, Stamina & Vitality</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/e6a6710122524c35b87c3d1bc0a66041.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Organic India Turmeric Formula Veg Capsule | Helps Reduce Inflammation</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/a2ec7fdd063b4e289e35535999b6683e.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Organic India Neem Veg Capsule | Acts as Blood Purifier</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/c36bd9cc9c06492eae42abe827fe36db.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Organic India Moringa Powder | Manages Weakness, Fatigue & Inflammation</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/7b4a4689a5294d97a9a752a5032f0fa2.jpg">
+      <p class="ellipsis-2-lines">Ogranic India Wheat Grass Powder | Supports Energy & Immunity</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/2655c4152d5b4912bb4c890b4e40a205.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Organic India Amalaki Veg Capsule</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/08b1dce5610845c59c62d111563fb73b.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Organic India Immunity Veg Capsule</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/859e947ac5744ba080a0cc385af28e37.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Organic India Breathe Free Veg Capsule</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/41bac8561c9848f5b5d94390cc0b1378.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Organic India LKC (Liver Kidney Care) Capsule | For Liver Care</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- In the spotlight  Ad -->
+        <h4 class="mb-3">In the spotlight  Ad</h4>
+    <div class="card-scroll" id="dealScroll">
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/81e831da9351456a81ca24421b73dfa9.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Accu-Chek Instant Test Strip ( Only Strip)</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/f46195c8cf7b4d7284aa73594365434c.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Fixderma Salyzap 2% Salicylic Acid Body Spray | Anti Acne Body Spray Fights with Acne & Unclogs Pores</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/0f72a3517ea0449192e1378b77ac42e8.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Wellbeing Nutrition Slow Triple Magnesium Complex with Glycinate, Aquamin Citrate & Threonate 1000mg Capsule</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/7d97afdbd07b469c93c1e8e7dd42a189.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Ostocalcium Total Chewable Tablet with Vitamin D & Calcium | Supports Strong Bones, Joints & Muscles (Veg) | Flavour Mixed Fruit</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/c764412f1f1f416f90a275a36ddac06b.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Kapiva Shilajit Gold Capsules with Black Musli, Gokshura & Ashwagandha | For Stamina & Energy</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/d030279dd8ed47ab9d2f427faea92d83.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Moov 100% Ayurvedic Pain Relief Spray | For Back Pain, Joint Pain, Knee Pain & Muscle Pain</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/358fc3b827bf4189a14702caee65e522.jpg">
+      <p class="ellipsis-2-lines">The Derma Co 1% Hyaluronic Sunscreen Aqua Gel with Vitamin E | Fragrance-Free</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/744942019ae2464c9fda80782071d6a5.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Mamaearth Ubtan Face Wash for Healthy Skin | Paraben & SLS-Free | Face Care Product for All Skin Types</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>     
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/2b2ddc54b8e04acf8638b43c53b512b6.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Chemist At Play Odour Control Underarm Roll On White Jasmine</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/fd01115dd82744b8a98d81de3b99b6bf.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Lacto Calamine Activated Charcoal Face Wash | Paraben-Free | For All Skin Types</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/ede3dde4c19c4199a5c32a70e70a650a.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Fixderma Shadow SPF 30+ Gel</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- Homeopathy women's health -->
+        <h4 class="mb-3">Homeopathy women's health</h4>
+    <div class="card-scroll" id="dealScroll">
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/ml1fcz1vaopvqhnz7fby.jpg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">ADEL Platinum Met. Dilution 200</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/1b7d93fe5e734502b33dbfaf0853744f.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Wheezal Chaparoo Amargosa Dilution 200</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/kx6hpfvc2ju5lfgwazce.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Wheezal WL26 Menopause Drop</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/tshkrppyr72qfzpg2ygz.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">SBL Pinus Lambertiana Dilution 12 CH</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/rtnk5gzixej7icg7dhli.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">REPL Dr. Advice No.3 Anemia Drop</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/76a2f0bbb05045f099c0f900a88acc90.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Dr. Reckeweg Sepia Dilution 200 CH</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/sk97yse4cay7pnhfz0qm.jpg">
+      <p class="ellipsis-2-lines">Dr. Reckeweg Hydrocotyle Asiat Dilution 1000 CH</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/mt2serprliacqyp1xxlf.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">SBL Abroma Radix Dilution 3 CH</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/f41mpyxewnv92odktgcs.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">SBL Viburnum Prunifolium Dilution 3 CH</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/zdo6memci6fg3c1v3h8b.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">SBL Agnus Castus 0/9 LM</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/cropped/xtvvxc8xgbutxokbqfr9.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Similia Biocom No.26 Tablet</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+
+  <!-- Minimum 33% off -->
+        <h4 class="mb-3">In the spotlight Ad </h4>
+    <div class="card-scroll" id="dealScroll">
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/d7169eec-cdb8-46cf-93ab-699e5d381db1.jpeg" alt="Hot Water Bag">
+      <p class="ellipsis-2-lines">Kerala Ayurveda Neelibringadi Keram</p>
+      <p><b>₹520</b> <span style="color: green;">25% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/g9wrlpstsypoqvktzvth.jpg" alt="Pain Relief Spray">
+      <p class="ellipsis-2-lines">Sandu Paripathadi Kadha</p>
+      <p><b>₹240</b> <span style="color: green;">37% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/22ddb76f6d1c43649333a0a921ae2a9b.jpg" alt="Pain Relief Gel">
+      <p class="ellipsis-2-lines">Dr. JRK Psorolin Oil | for Reducing Scaling & Soothens Skin</p>
+      <p><b>₹155</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/a2ec7fdd063b4e289e35535999b6683e.jpg" alt="Gelatin Capsule">
+      <p class="ellipsis-2-lines">Organic India Neem Veg Capsule | Acts as Blood Purifier</p>
+      <p><b>₹191</b></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/viplbsx3yffods5cgvek.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Sesa Ayurvedic Hair Oil | Reduces Hair Fall & Supports Hair Growth</p>
+      <p><b>₹69</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/1dc52e1cf2c34a3fa1722bafa411e8cf.jpg" alt="Spray Combo">
+      <p class="ellipsis-2-lines">Urtiplex Capsule</p>
+      <p><b>₹320</b> <span style="color: green;">40% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/pharmacy-production-rxs%2F1751951969_crop_335.png">
+      <p class="ellipsis-2-lines">Dabur Meswak Toothpaste |Complete Oral & Gum Care Paste |Contains Miswak |Fluoride Free</p>
+      <p><b>₹66.8</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/579e68186bf44a4796e711374f532d85.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Herbal Hills Neem Powder</p>
+      <p><b>₹24.7</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/l_watermark_346,w_380,h_380/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/vpam1hjjcwor2vri7cev.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Sandu Maha Manjishthadi Kadha</p>
+      <p><b>₹360</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/75622f60a5cd424ca97284b95555e46c.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Dr. JRK 777 Oil | for Psoriasis Relief</p>
+      <p><b>₹44.1</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="deal-card" onclick="window.location.href='product.html'">
+      <img src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/a36fe737eb3740eaaea1c95768cbcba5.jpg" alt="Pregnancy Test">
+      <p class="ellipsis-2-lines">Organic India Beautiful Skin Capsule</p>
+      <p><b>₹112</b> <span style="color: green;">42% off</span></p>
+    </div>
+
+    <div class="text-end mt-2">
+      <a href="#" class="btn btn-danger btn-sm">SEE ALL</a>
+    </div>
+  </div>
+  
+  <script>
+  function scrollLeft() {
+    document.getElementById("dealScroll").scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  function scrollRight() {
+    document.getElementById("dealScroll").scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+
+
+    function scrollLeft() {
+      document.getElementById("personalScroll").scrollBy({
+        left: -200,
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollRight() {
+      document.getElementById("personalScroll").scrollBy({
+        left: 200,
+        behavior: 'smooth'
+      });
+    }
+
+     const container = document.getElementById('scrollContainer');
+
+    function scrollLeft() {
+      container.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollRight() {
+      container.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollLeft() {
+    document.getElementById("dealScroll").scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  function scrollRight() {
+    document.getElementById("dealScroll").scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+  // const container = document.getElementById('scrollContainer');
+
+    function scrollLeft() {
+      container.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollRight() {
+      container.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+  
+    
+  </script>
+</body>
+</html>

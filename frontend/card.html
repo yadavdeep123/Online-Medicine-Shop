@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MediShop Homepage</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .image-box img {
+      width: 100%;
+      height: 200px;               /* Same height for both images */
+      object-fit: cover;           /* Crop image to fill box without distortion */
+      border-radius: 10px;
+    }
+
+    .image-box {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body style="background-color: #f8f9fa;">
+
+  <div class="container text-center mt-5">
+    <h1 class="mb-4">Welcome to <span class="text-success">MediShop</span></h1>
+    <p class="mb-4">Your trusted platform for medicines and healthcare products.</p>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5 image-box">
+        <img src="https://onemg.gumlet.io/38ce4d37-8bd5-4fe7-94dd-3953062595c5_1743761276.png?w=901&h=200&format=auto" alt="Banner 1">
+      </div>
+      <div class="col-md-6 col-lg-5 image-box">
+        <img src="https://onemg.gumlet.io/2025-02%2F1739789153_1948x800+%281%29.png?w=901&h=200&format=auto" alt="Banner 2">
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
