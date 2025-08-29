@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lab Tests — Sample List</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --accent:#0b74ff;
+      --muted:#6b7280;
+      --success:#16a34a;
+      --danger:#ef4444;
+      --glass: rgba(255,255,255,0.6);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg), #eef3fb);
+      color:#111827;
+      padding:28px;
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:20px;
+    }
+    h1{font-size:20px;margin:0}
+    .controls{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .search {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:var(--card);
+      border-radius:10px;
+      padding:8px 12px;
+      box-shadow:0 1px 4px rgba(16,24,40,0.05);
+      width:340px;
+    }
+    .search input{
+      border:0;outline:0;width:100%;
+      font-size:14px;background:transparent;
+    }
+
+    .cart-btn{
+      background:var(--card);
+      border-radius:10px;
+      padding:8px 14px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      cursor:pointer;
+      box-shadow:0 1px 4px rgba(16,24,40,0.05);
+      border:1px solid rgba(15,23,42,0.04);
+    }
+
+    main{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+    }
+
+    /* left: tests grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+      gap:14px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:12px;
+      box-shadow:0 6px 18px rgba(11,24,40,0.06);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      border:1px solid rgba(15,23,42,0.03);
+    }
+
+    .avatar{
+      width:64px;
+      height:64px;
+      border-radius:10px;
+      background:linear-gradient(135deg,#e6f0ff,#f8fafc);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:18px;
+      color:var(--accent);
+      flex-shrink:0;
+    }
+
+    .info{
+      flex:1;
+    }
+    .info h4{margin:0;font-size:15px}
+    .meta{color:var(--muted);font-size:13px;margin-top:6px}
+    .price-row{
+      display:flex;justify-content:space-between;align-items:center;margin-top:10px;
+    }
+    .price{font-weight:700}
+    .old{color:var(--muted);text-decoration:line-through;font-size:13px;margin-left:8px}
+    .badge-safe{background:#ecfdf5;color:var(--success);padding:6px 8px;border-radius:999px;font-size:12px;font-weight:600}
+    .btn{
+      background:var(--accent);
+      color:white;
+      border:0;
+      padding:8px 10px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:13px;
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(11,92,255,0.12);
+    }
+
+    /* right: cart */
+    aside{
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.75));
+      border-radius:12px;
+      padding:12px;
+      min-height:220px;
+      box-shadow:0 6px 18px rgba(11,24,40,0.06);
+      border:1px solid rgba(15,23,42,0.03);
+    }
+    .cart-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+    .cart-item{display:flex;justify-content:space-between;align-items:center;gap:8px;background:transparent;padding:6px;border-radius:8px}
+    .cart-item .left{display:flex;gap:8px;align-items:center}
+    .cart-item .name{font-size:14px}
+    .cart-footer{margin-top:12px;border-top:1px dashed rgba(15,23,42,0.06);padding-top:10px;display:flex;flex-direction:column;gap:8px}
+    .empty{color:var(--muted);font-size:14px;text-align:center;padding:20px 0}
+
+    /* responsive */
+    @media (max-width:900px){
+      main{grid-template-columns:1fr}
+      .controls{flex-direction:column;align-items:stretch;}
+      .search{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Lab Tests — 10 Popular Tests</h1>
+        <p style="margin:6px 0 0;color:var(--muted);font-size:13px">Search, view price & add tests to cart.</p>
+      </div>
+
+      <div class="controls">
+        <div class="search" title="Search tests">
+          🔎
+          <input id="searchInput" type="search" placeholder="Search tests (e.g. CBC, Lipid)" oninput="searchTests()" />
+          <button class="cart-btn" onclick="toggleCart()" id="cartToggle">🛒 Cart (<span id="cartCount">0</span>)</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div id="testsGrid" class="grid">
+          <!-- cards injected here -->
+        </div>
+      </section>
+
+      <aside id="cartPanel">
+        <h3 style="margin:0 0 6px 0">Your Cart</h3>
+        <div id="cartList" class="cart-list">
+          <div class="empty">No tests added yet.</div>
+        </div>
+
+        <div class="cart-footer" id="cartFooter" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:700">Total</div>
+            <div style="font-weight:700">₹<span id="cartTotal">0</span></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn" onclick="checkout()">Checkout</button>
+            <button class="btn ghost" onclick="clearCart()">Clear</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+<script>
+  // Example data: 10 lab tests
+  const tests = [
+    { id:1, name:"Complete Blood Count (CBC)", desc:"Counts of RBC, WBC, platelets", price:400, oldPrice:500, safe:true },
+    { id:2, name:"Lipid Profile", desc:"Cholesterol, HDL, LDL & triglycerides", price:600, oldPrice:750, safe:true },
+    { id:3, name:"Liver Function Test (LFT)", desc:"ALT, AST, bilirubin", price:700, oldPrice:900, safe:true },
+    { id:4, name:"Kidney Function Test (KFT)", desc:"Creatinine, Urea, electrolytes", price:650, oldPrice:800, safe:true },
+    { id:5, name:"Thyroid Profile (TSH, T3, T4)", desc:"Thyroid hormones", price:550, oldPrice:700, safe:false },
+    { id:6, name:"HbA1c", desc:"Average blood sugar (3 months)", price:450, oldPrice:550, safe:false },
+    { id:7, name:"Urine Routine (URINE R/M)", desc:"Infection, sugar, protein check", price:200, oldPrice:300, safe:true },
+    { id:8, name:"Vitamin D (25-OH)", desc:"Vitamin D level", price:800, oldPrice:1000, safe:false },
+    { id:9, name:"CRP (C-Reactive Protein)", desc:"Inflammation marker", price:350, oldPrice:450, safe:true },
+    { id:10, name:"Serum Electrolytes", desc:"Na⁺, K⁺, Cl⁻", price:300, oldPrice:380, safe:true }
+  ];
+
+  // Simple in-memory cart
+  let cart = [];
+
+  // Utility: format price
+  function fmt(n){ return Number(n).toFixed(0); }
+
+  // Render grid of tests
+  function renderTests(list = tests){
+    const grid = document.getElementById('testsGrid');
+    grid.innerHTML = '';
+    if(list.length === 0){
+      grid.innerHTML = '<div style="grid-column:1/-1;padding:20px;background:var(--card);border-radius:10px;text-align:center;color:var(--muted)">No tests match your search.</div>';
+      return;
+    }
+    list.forEach(t=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <div class="avatar">${t.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
+        <div class="info">
+          <h4 title="${t.name}">${t.name}</h4>
+          <div class="meta">${t.desc}</div>
+          <div class="price-row">
+            <div>
+              <span class="price">₹${fmt(t.price)}</span>
+              <span class="old">₹${fmt(t.oldPrice)}</span>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              ${t.safe ? '<span class="badge-safe">SAFE</span>' : ''}
+              <button class="btn" onclick="addToCart(${t.id})">Add</button>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // Search function (oninput)
+  function searchTests(){
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    if(!q){ renderTests(); return; }
+    const filtered = tests.filter(t => 
+      t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q)
+    );
+    renderTests(filtered);
+  }
+
+  // Cart functions
+  function addToCart(id){
+    const item = tests.find(t=>t.id===id);
+    if(!item) return;
+    const existing = cart.find(c=>c.id===id);
+    if(existing){
+      existing.qty += 1;
+    } else {
+      cart.push({ id:item.id, name:item.name, price:item.price, qty:1 });
+    }
+    renderCart();
+    flashCartCount();
+  }
+
+  function removeFromCart(id){
+    cart = cart.filter(c => c.id !== id);
+    renderCart();
+  }
+
+  function changeQty(id, delta){
+    const it = cart.find(c=>c.id===id);
+    if(!it) return;
+    it.qty += delta;
+    if(it.qty < 1) removeFromCart(id);
+    renderCart();
+  }
+
+  function clearCart(){
+    if(!confirm('Clear all items from cart?')) return;
+    cart = [];
+    renderCart();
+  }
+
+  function checkout(){
+    if(cart.length===0){ alert('Cart is empty'); return; }
+    let summary = 'You are ordering:\\n\\n';
+    cart.forEach(c=> summary += `${c.qty} × ${c.name} — ₹${fmt(c.price*c.qty)}\\n`);
+    summary += `\\nTotal: ₹${fmt(getTotal())}\\n\\nProceed to checkout?`;
+    if(confirm(summary)){
+      // simulate order success
+      alert('Order placed successfully (demo).');
+      cart = [];
+      renderCart();
+    }
+  }
+
+  function getTotal(){
+    return cart.reduce((s,i)=> s + i.price * i.qty, 0);
+  }
+
+  // Render cart panel
+  function renderCart(){
+    const list = document.getElementById('cartList');
+    const countSpan = document.getElementById('cartCount');
+    const totalSpan = document.getElementById('cartTotal');
+    const footer = document.getElementById('cartFooter');
+
+    list.innerHTML = '';
+    if(cart.length===0){
+      list.innerHTML = '<div class="empty">No tests added yet.</div>';
+      footer.style.display = 'none';
+    } else {
+      footer.style.display = 'block';
+      cart.forEach(c=>{
+        const item = document.createElement('div');
+        item.className = 'cart-item';
+        item.innerHTML = `
+          <div class="left">
+            <div style="width:36px;height:36px;border-radius:8px;background:#f3f6fb;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">${c.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
+            <div style="min-width:0">
+              <div class="name" title="${c.name}">${c.name}</div>
+              <div style="color:var(--muted);font-size:13px">₹${fmt(c.price)} × ${c.qty}</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+            <div style="font-weight:700">₹${fmt(c.price * c.qty)}</div>
+            <div style="display:flex;gap:6px">
+              <button class="btn ghost" onclick="changeQty(${c.id}, -1)">−</button>
+              <button class="btn ghost" onclick="changeQty(${c.id}, 1)">+</button>
+              <button class="btn ghost" onclick="removeFromCart(${c.id})" title="Remove">✕</button>
+            </div>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+      totalSpan.textContent = fmt(getTotal());
+    }
+    countSpan.textContent = cart.reduce((s,i)=> s + i.qty, 0);
+  }
+
+  // small UI helpers
+  let cartVisible = true;
+  function toggleCart(){
+    const panel = document.getElementById('cartPanel');
+    cartVisible = !cartVisible;
+    panel.style.display = cartVisible ? 'block' : 'none';
+  }
+
+  function flashCartCount(){
+    const el = document.getElementById('cartCount');
+    el.style.transition = 'transform 140ms';
+    el.style.transform = 'scale(1.35)';
+    setTimeout(()=> el.style.transform = 'scale(1)', 140);
+  }
+
+  // initial render
+  renderTests();
+  renderCart();
+</script>
+</body>
+</html>
