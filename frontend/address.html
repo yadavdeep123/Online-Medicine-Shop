@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order & Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+      display: none;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #999;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Delivery Address Form -->
+  <div class="form-container show" id="addressContainer">
+    <h2>Enter Delivery Address</h2>
+    <form id="orderForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Mobile Number</label>
+      <input type="tel" id="phone" required>
+
+      <label for="pincode">PIN Code</label>
+      <input type="text" id="pincode" required>
+
+      <label for="address">Full Address</label>
+      <textarea id="address" rows="3" required></textarea>
+
+      <label for="city">City</label>
+      <input type="text" id="city" required>
+
+      <label for="state">State</label>
+      <select id="state" required>
+        <option value="">Select State</option>
+        <option>Bihar</option>
+        <option>Jharkhand</option>
+        <option>Uttar Pradesh</option>
+        <option>Maharashtra</option>
+        <option>Delhi</option>
+      </select>
+
+      <label for="landmark">Landmark (Optional)</label>
+      <input type="text" id="landmark">
+
+      <div class="error" id="errorAddress"></div>
+
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+
+  <!-- Payment Form -->
+  <div class="form-container" id="paymentContainer">
+    <h2>Payment Details</h2>
+
+    <form id="paymentForm">
+      <label for="paymentMode">Select Payment Mode</label>
+      <select id="paymentMode" required>
+        <option value="">Choose</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="upi">UPI</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+      <!-- Card Fields -->
+      <div id="cardFields" style="display: none;">
+        <label for="cardName">Cardholder Name</label>
+        <input type="text" id="cardName">
+
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" maxlength="16">
+
+        <label for="expiry">Expiry Date (MM/YY)</label>
+        <input type="text" id="expiry" placeholder="MM/YY">
+
+        <label for="cvv">CVV</label>
+        <input type="password" id="cvv" maxlength="4">
+      </div>
+
+      <!-- UPI Field -->
+      <div id="upiField" style="display: none;">
+        <label for="upiId">Enter UPI ID</label>
+        <input type="text" id="upiId" placeholder="example@upi">
+      </div>
+
+      <div class="error" id="errorPayment"></div>
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Address Form Submit
+    document.getElementById("orderForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let name = document.getElementById("name").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let pincode = document.getElementById("pincode").value.trim();
+      let address = document.getElementById("address").value.trim();
+      let city = document.getElementById("city").value.trim();
+      let state = document.getElementById("state").value;
+      let error = document.getElementById("errorAddress");
+
+      error.textContent = "";
+
+      if (name === "" || phone === "" || pincode === "" || address === "" || city === "" || state === "") {
+        error.textContent = "Please fill all required fields.";
+        return;
+      }
+
+      if (!/^\d{10}$/.test(phone)) {
+        error.textContent = "Mobile number must be 10 digits.";
+        return;
+      }
+
+      if (!/^\d{6}$/.test(pincode)) {
+        error.textContent = "PIN Code must be 6 digits.";
+        return;
+      }
+
+      // Show payment form
+      document.getElementById("addressContainer").classList.remove("show");
+      document.getElementById("paymentContainer").classList.add("show");
+    });
+
+    // Show relevant fields based on selected payment mode
+    document.getElementById("paymentMode").addEventListener("change", function () {
+      let mode = this.value;
+      document.getElementById("cardFields").style.display = mode === "card" ? "block" : "none";
+      document.getElementById("upiField").style.display = mode === "upi" ? "block" : "none";
+    });
+
+    // Payment Form Submit
+    document.getElementById("paymentForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let mode = document.getElementById("paymentMode").value;
+      let error = document.getElementById("errorPayment");
+      error.textContent = "";
+
+      if (mode === "") {
+        error.textContent = "Please select a payment mode.";
+        return;
+      }
+
+      if (mode === "card") {
+        let name = document.getElementById("cardName").value.trim();
+        let cardNumber = document.getElementById("cardNumber").value.trim();
+        let expiry = document.getElementById("expiry").value.trim();
+        let cvv = document.getElementById("cvv").value.trim();
+
+        if (name === "" || cardNumber === "" || expiry === "" || cvv === "") {
+          error.textContent = "Please fill all card details.";
+          return;
+        }
+
+        if (!/^\d{16}$/.test(cardNumber)) {
+          error.textContent = "Card number must be 16 digits.";
+          return;
+        }
+
+        if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+          error.textContent = "Expiry must be in MM/YY format.";
+          return;
+        }
+
+        if (!/^\d{3,4}$/.test(cvv)) {
+          error.textContent = "CVV must be 3 or 4 digits.";
+          return;
+        }
+
+        alert("Card Payment Successful!");
+      }
+
+      else if (mode === "upi") {
+        let upiId = document.getElementById("upiId").value.trim();
+        if (upiId === "" || !upiId.includes("@")) {
+          error.textContent = "Enter a valid UPI ID (e.g., name@upi)";
+          return;
+        }
+
+        alert("UPI Payment Successful!");
+      }
+
+      else if (mode === "cod") {
+        alert("Cash on Delivery selected! Order placed.");
+      }
+
+      // Redirect after success
+      window.location.href = "order.html";
+    });
+  </script>
+
+</body>
+</html>
