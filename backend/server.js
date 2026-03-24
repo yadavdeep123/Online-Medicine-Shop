@@ -17,6 +17,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 let dbMode = 'disconnected';
 let memoryServer;
 
@@ -206,6 +207,10 @@ async function startServer() {
         dbMode = 'external';
         console.log('MongoDB connected (external)');
       } catch (dbErr) {
+        if (IS_PRODUCTION) {
+          throw new Error(`External MongoDB connection failed in production: ${dbErr.message}`);
+        }
+
         console.error('External MongoDB connection failed:', dbErr.message);
         console.log('Starting in-memory MongoDB fallback...');
         memoryServer = await MongoMemoryServer.create();
@@ -215,6 +220,10 @@ async function startServer() {
         console.log('MongoDB connected (in-memory fallback)');
       }
     } else {
+      if (IS_PRODUCTION) {
+        throw new Error('MONGO_URI is required in production. Please set it in Render environment variables.');
+      }
+
       console.log('MONGO_URI not found. Starting in-memory MongoDB...');
       memoryServer = await MongoMemoryServer.create();
       const memoryUri = memoryServer.getUri();

@@ -27,3 +27,5 @@ Push this repository to your GitHub account.
 ## Notes
 - If `MONGO_URI` is not set, app uses in-memory MongoDB. This is demo mode and data resets on restart.
 - For production, always set `MONGO_URI` to Atlas.
+- On Render production, service will fail fast if `MONGO_URI` is missing or invalid.
+- `MONGOMS_DISABLE_POSTINSTALL=1` is configured in `render.yaml` to avoid mongodb-memory-server binary download during build.

@@ -10,7 +10,7 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
+      - key: MONGOMS_DISABLE_POSTINSTALL
+        value: "1"
       - key: MONGO_URI
         sync: false
