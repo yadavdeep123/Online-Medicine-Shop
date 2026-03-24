@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Medicine Shop - Your Trusted Medicine Delivery Platform</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --brand: #0e7490;
+      --brand-soft: #ecfeff;
+      --accent: #f97316;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #ecfeff 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .navbar-custom {
+      background: linear-gradient(120deg, var(--brand) 0%, #155e75 100%);
+      box-shadow: 0 4px 12px rgba(14, 116, 144, 0.15);
+      padding: 0.8rem 0;
+    }
+
+    .navbar-custom .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white !important;
+    }
+
+    .navbar-custom .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .nav-link.active {
+      color: var(--accent) !important;
+    }
+
+    .cart-badge {
+      background: var(--danger);
+      color: white;
+      border-radius: 50%;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      margin-left: 0.25rem;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, var(--brand-soft) 100%);
+      border-bottom: 3px solid var(--brand);
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .product-card {
+      border: 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-card img {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .badge-safe {
+      background: linear-gradient(120deg, #dcfce7 0%, #bbf7d0 100%);
+      color: #15803d;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .price-section {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin: 0.75rem 0;
+    }
+
+    .price-original {
+      text-decoration: line-through;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .price-discount {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--success);
+    }
+
+    .btn-add-cart {
+      background: linear-gradient(120deg, var(--brand) 0%, #155e75 100%);
+      border: 0;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-add-cart:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(14, 116, 144, 0.4);
+      color: white;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      width: 300px;
+      height: 100vh;
+      background: white;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease;
+      z-index: 1040;
+      overflow-y: auto;
+    }
+
+    .sidebar.show {
+      left: 0;
+    }
+
+    .modal-page {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1050;
+      overflow-y: auto;
+    }
+
+    .modal-page.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content-inner {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 95%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.65rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(120deg, var(--brand) 0%, #155e75 100%);
+      border: 0;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-primary-custom:hover {
+      box-shadow: 0 4px 12px rgba(14, 116, 144, 0.4);
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      align-items: center;
+    }
+
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cart-item-remove {
+      margin-left: auto;
+      cursor: pointer;
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+    }
+
+    .badge-status {
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-confirmed { background: #dbeafe; color: #1e40af; }
+    .badge-shipped { background: #d1e7dd; color: #0b5345; }
+    .badge-delivered { background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#" onclick="showHome(); return false;">
+        <i class="fas fa-pills"></i> MedShop
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" onclick="showHome(); return false;">Medicines</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showDoctors(); return false;"><i class="fas fa-user-md"></i> Doctors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showLabTests(); return false;"><i class="fas fa-flask"></i> Lab Tests</a>
+          </li>
+          <li class="nav-item" id="authNav" style="display: none;">
+            <a class="nav-link" href="#" onclick="showAuth(); return false;">Login</a>
+          </li>
+          <li class="nav-item" id="profileNav" style="display: none;">
+            <a class="nav-link" href="#" onclick="showProfile(); return false;">
+              <span id="userNameNav">Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="toggleCart(); return false;">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartCount" class="cart-badge">0</span>
+            </a>
+          </li>
+          <li class="nav-item" id="logoutNav" style="display: none;">
+            <a class="nav-link" href="#" onclick="logout(); return false;">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container py-4">
+    <!-- Home Page -->
+    <div id="homePage" class="page-section">
+      <div class="hero">
+        <h1><i class="fas fa-heart"></i> Your Trusted Medicine Delivery Partner</h1>
+        <p>Fast, safe, and reliable medicine delivery right to your doorstep</p>
+      </div>
+
+      <!-- Categories -->
+      <div class="mb-4">
+        <h3 class="mb-3">Shop by Health Concern</h3>
+        <div class="row g-2">
+          <div class="col-6 col-sm-4 col-lg-2">
+            <div class="text-center p-2 bg-white rounded" style="cursor: pointer;">
+              <i class="fas fa-heartbeat" style="font-size: 2rem; color: var(--brand);"></i>
+              <p class="mt-2 small">Heart Care</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-lg-2">
+            <div class="text-center p-2 bg-white rounded" style="cursor: pointer;">
+              <i class="fas fa-candy-cane" style="font-size: 2rem; color: var(--accent);"></i>
+              <p class="mt-2 small">Diabetes</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-lg-2">
+            <div class="text-center p-2 bg-white rounded" style="cursor: pointer;">
+              <i class="fas fa-bone" style="font-size: 2rem; color: #8b5cf6;"></i>
+              <p class="mt-2 small">Bone Care</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-lg-2">
+            <div class="text-center p-2 bg-white rounded" style="cursor: pointer;">
+              <i class="fas fa-lungs" style="font-size: 2rem; color: #06b6d4;"></i>
+              <p class="mt-2 small">Respiratory</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-lg-2">
+            <div class="text-center p-2 bg-white rounded" style="cursor: pointer;">
+              <i class="fas fa-stomach" style="font-size: 2rem; color: #84cc16;"></i>
+              <p class="mt-2 small">Stomach</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-lg-2">
+            <div class="text-center p-2 bg-white rounded" style="cursor: pointer;">
+              <i class="fas fa-skin" style="font-size: 2rem; color: #ec4899;"></i>
+              <p class="mt-2 small">Skin Care</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div>
+        <h3 class="mb-3">Featured Medicines</h3>
+        <div id="productsGrid" class="row g-3"></div>
+        <div id="emptyProducts" class="empty-state">
+          <i class="fas fa-inbox"></i>
+          <p>No products available</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auth Page -->
+    <div id="authPage" class="page-section" style="display: none;">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="modal-content-inner" style="position: relative; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <h2 id="authTitle" class="mb-3">Login</h2>
+            <div id="loginForm" style="display: block;">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="loginEmail" placeholder="your@email.com" />
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="loginPassword" placeholder="••••••••" />
+              </div>
+              <button class="btn-primary-custom mb-2" onclick="login()">Login</button>
+              <p class="text-center text-muted">
+                Don't have an account? <a href="#" onclick="toggleAuthForm(); return false;" style="color: var(--brand);">Sign Up</a>
+              </p>
+            </div>
+
+            <div id="registerForm" style="display: none;">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="registerName" placeholder="Your Name" />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="registerEmail" placeholder="your@email.com" />
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="registerPassword" placeholder="••••••••" />
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="text" id="registerPhone" placeholder="Your Phone" />
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" id="registerAddress" placeholder="Your Default Address" />
+              </div>
+              <button class="btn-primary-custom mb-2" onclick="register()">Sign Up</button>
+              <p class="text-center text-muted">
+                Already have an account? <a href="#" onclick="toggleAuthForm(); return false;" style="color: var(--brand);">Login</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="page-section" style="display: none;">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <h3>Profile Information</h3>
+              <div class="mt-3">
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+                <p><strong>Address:</strong> <span id="profileAddress"></span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3>My Orders</h3>
+              <div id="ordersList" class="mt-3"></div>
+              <div id="noOrders" class="empty-state">
+                <i class="fas fa-box"></i>
+                <p>No orders yet</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Page -->
+    <div id="checkoutPage" class="page-section" style="display: none;">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h2 class="mb-3">Checkout</h2>
+              <div class="form-group">
+                <label>Delivery Address</label>
+                <input type="text" id="checkoutAddress" placeholder="Your delivery address" />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" id="checkoutPhone" placeholder="Your phone number" />
+              </div>
+              <div class="bg-light p-3 rounded mb-3">
+                <h5>Order Summary</h5>
+                <div id="checkoutSummary"></div>
+                <hr />
+                <h4>Total: ₹<span id="checkoutTotal">0</span></h4>
+              </div>
+              <button class="btn-primary-custom mb-2" onclick="placeOrder()">Place Order</button>
+              <button class="btn btn-secondary w-100" onclick="showCart()">Back to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doctors Page -->
+    <div id="doctorsPage" class="page-section" style="display: none;">
+      <div class="mb-4">
+        <h1 class="mb-3"><i class="fas fa-user-md"></i> Find a Doctor</h1>
+        <div class="input-group mb-4">
+          <input type="text" id="doctorSearch" class="form-control" placeholder="Search doctors by name or specialization..." onkeyup="filterDoctors()">
+          <button class="btn btn-outline-secondary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <div id="doctorsGrid" class="row g-3"></div>
+      <div id="noDoctors" class="empty-state">
+        <i class="fas fa-user-md"></i>
+        <p>No doctors found</p>
+      </div>
+    </div>
+
+    <!-- Lab Tests Page -->
+    <div id="labTestsPage" class="page-section" style="display: none;">
+      <div class="mb-4">
+        <h1 class="mb-3"><i class="fas fa-flask"></i> Book Lab Tests</h1>
+        <div class="input-group mb-4">
+          <input type="text" id="labSearch" class="form-control" placeholder="Search lab tests..." onkeyup="filterTests()">
+          <button class="btn btn-outline-secondary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <div id="labTestsGrid" class="row g-3"></div>
+      <div id="noLabTests" class="empty-state">
+        <i class="fas fa-flask"></i>
+        <p>No lab tests available</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div class="sidebar" id="cartSidebar">
+    <div class="p-3 border-bottom">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="m-0">Shopping Cart</h4>
+        <button class="btn-close" onclick="toggleCart()"></button>
+      </div>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div id="emptyCart" class="empty-state">
+      <i class="fas fa-shopping-cart"></i>
+      <p>Your cart is empty</p>
+    </div>
+
+    <div class="p-3 border-top" id="cartFooter" style="display: none;">
+      <div class="mb-3">
+        <p class="mb-1">Subtotal: ₹<span id="cartSubtotal">0</span></p>
+        <h5>Total: ₹<span id="cartTotal">0</span></h5>
+      </div>
+      <button class="btn-primary-custom mb-2" onclick="goToCheckout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="position-fixed" style="top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); display: none; z-index: 1039;" onclick="toggleCart()"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
